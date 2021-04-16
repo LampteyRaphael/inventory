@@ -1,0 +1,16 @@
+.login-card{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+#login-body{
+    background-image: url("../image/upsa3.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+   }
+
+   .select{
+    width: 100%;
+   }
