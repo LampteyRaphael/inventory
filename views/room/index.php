@@ -1,7 +1,9 @@
 <?php
 
+use app\models\Room;
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
+use yii\helpers\ArrayHelper;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\RoomSearch */
@@ -11,27 +13,60 @@ $this->title = 'Rooms';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="room-index">
-<div class="box">
-     <div class="box-body">
-    <p>
-        <?= Html::a('Create Room', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-    <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
+    <?php Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'toolbar' =>  [
+            ['content'=>
+                Html::a('Create Room', ['create'], ['class' => 'btn btn-success'])
+            ],
+            '{export}',
+            '{toggleData}'
+        ],
+
+    'pjax'=>true,
+    'bordered' => true,
+    'striped' => true,
+    'condensed' => false,
+    'bootstrap'=>true,
+    'responsive' => true,
+    'hover' => true,
+    'panel' => [
+        'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-globe"></i>Room</h3>',
+        'type' => GridView::TYPE_PRIMARY,
+    ],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'name',
+            [
+                'attribute'=>'name',
+                'value'=> 'name',
+                'filter' => ArrayHelper::map(Room::find()->asArray()->all(), 'name', 'name'),
+                'filterType' => GridView::FILTER_SELECT2,
+                'filterWidgetOptions' => [
+                    'options' => ['prompt' => 'Room'],
+                    'pluginOptions' => ['allowClear' => true],
+                ],
+            ],
+            ['class' => 'kartik\grid\ActionColumn',
+            'template' => '{view} {delete} ',
+            'width'=>100,
+            'buttons' => [
+                'view' => function ($url, $model, $key) {
+                    return Html::a ( '<span class="btn btn-success" aria-hidden="true">View</span> ', ['room/view', 'id' => $model->id] );
+                },
 
-            ['class' => 'yii\grid\ActionColumn'],
+                'delete' => function ($url, $model, $key) {
+                    return Html::a('<span class="btn btn-danger" aria-hidden="true">Delete</span>',$url,['data-confirm' => 'Are you sure you want to deny this request?', 'data-method' =>'POST']);
+                },
+                
+            ],
+
+        ],
         ],
     ]); ?>
 
     <?php Pjax::end(); ?>
-     </div>
-</div>
 </div>
