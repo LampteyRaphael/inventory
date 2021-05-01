@@ -119,6 +119,7 @@ class ComposerStaticInitab34f6661c707f2d8d9511c21bd1f87c
             'kartik\\select2\\' => 15,
             'kartik\\plugins\\checkbox\\' => 24,
             'kartik\\mpdf\\' => 12,
+            'kartik\\helpers\\' => 15,
             'kartik\\grid\\' => 12,
             'kartik\\form\\' => 12,
             'kartik\\export\\' => 14,
@@ -126,6 +127,7 @@ class ComposerStaticInitab34f6661c707f2d8d9511c21bd1f87c
             'kartik\\dialog\\' => 14,
             'kartik\\color\\' => 13,
             'kartik\\checkbox\\' => 16,
+            'kartik\\builder\\' => 15,
             'kartik\\bs4dropdown\\' => 19,
             'kartik\\base\\' => 12,
         ),
@@ -284,6 +286,10 @@ class ComposerStaticInitab34f6661c707f2d8d9511c21bd1f87c
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-mpdf/src',
         ),
+        'kartik\\helpers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-helpers/src',
+        ),
         'kartik\\grid\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-grid/src',
@@ -311,6 +317,10 @@ class ComposerStaticInitab34f6661c707f2d8d9511c21bd1f87c
         'kartik\\checkbox\\' => 
         array (
             0 => __DIR__ . '/..' . '/kartik-v/yii2-checkbox-x/src',
+        ),
+        'kartik\\builder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/kartik-v/yii2-builder/src',
         ),
         'kartik\\bs4dropdown\\' => 
         array (

@@ -25,23 +25,26 @@ $this->params['breadcrumbs'][] = $this->title;
         
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        // 'showPageSummary'=>true,
+        'showPageSummary'=>true,
         // 'containerOptions'=>['style'=>'overflow: auto'], // only set when $responsive = false
         'headerRowOptions'=>['class'=>'kartik-sheet-style'],
         'filterRowOptions'=>['class'=>'kartik-sheet-style'],
-        // 'containerOptions' => ['style'=>'overflow: auto'],
-        // 'beforeHeader'=>[
-        //     [
-        //         'columns'=>[
-        //             ['content'=>'Header Before 1', 'options'=>['colspan'=>4, 'class'=>'text-center warning']], 
-        //             ['content'=>'Header Before 2', 'options'=>['colspan'=>4, 'class'=>'text-center warning']], 
-        //             ['content'=>'Header Before 3', 'options'=>['colspan'=>3, 'class'=>'text-center warning']], 
-        //         ],
-        //          'options'=>['class'=>'skip-export'] // remove this row from export
-        //     ]
-        // ],
+        'containerOptions' => ['style'=>'overflow: auto'],
+        'beforeHeader'=>[
+            [
+                'columns'=>[
+                    // ['content'=>'Header Before 1', 'options'=>['colspan'=>4, 'class'=>'text-center warning']], 
+                    // ['content'=>'Header Before 2', 'options'=>['colspan'=>4, 'class'=>'text-center warning']], 
+                    // ['content'=>'Header Before 3', 'options'=>['colspan'=>3, 'class'=>'text-center warning']], 
+                ],
+                 'options'=>['class'=>'skip-export'] // remove this row from export
+            ]
+        ],
 
         'toolbar' =>  [
+            ['content'=>
+                Html::a('Import Excel', ['importc'], ['class' => 'btn btn-success']),
+            ],
             ['content'=>
                 Html::a('Create Inventory', ['create'], ['class' => 'btn btn-success'])
             ],

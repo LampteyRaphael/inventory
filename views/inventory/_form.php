@@ -32,7 +32,7 @@ use kartik\select2\Select2;
                 <?= 
                 $form->field($model, 'item_id')->widget(Select2::classname(), [
                  'data' => ArrayHelper::map(Item::find()->all(),'id','name'),
-                 'language' => 'de',
+                 'language' => 'en',
                  'options' => ['placeholder' => 'Select a state ...'],
                  'pluginOptions' => [
                      'allowClear' => true
@@ -46,7 +46,7 @@ use kartik\select2\Select2;
                     <?= 
                     $form->field($model, 'category_id')->widget(Select2::classname(), [
                     'data' => ArrayHelper::map(Category::find()->all(),'id','name'),
-                    'language' => 'de',
+                    'language' => 'en',
                     'options' => ['placeholder' => 'Select a state ...'],
                     'pluginOptions' => [
                         'allowClear' => true
@@ -59,7 +59,7 @@ use kartik\select2\Select2;
                 <?= 
                     $form->field($model, 'brand_id')->widget(Select2::classname(), [
                     'data' => ArrayHelper::map(Brand::find()->all(),'id','name'),
-                    'language' => 'de',
+                    'language' => 'en',
                     'options' => ['placeholder' => 'Select a state ...'],
                     'pluginOptions' => [
                         'allowClear' => true

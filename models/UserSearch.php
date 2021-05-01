@@ -71,7 +71,7 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'room.name', $this->room_id])
             ->andFilterWhere(['like', 'role.name', $this->role_id])
             ->andFilterWhere(['like', 'email', $this->email])
-            //  ->andFilterWhere(['like', 'user.name', $this->is_active])
+            ->andFilterWhere(['like', 'active_status.name', $this->is_active])
             ->andFilterWhere(['like', 'accessToken', $this->accessToken]);
 
         return $dataProvider;

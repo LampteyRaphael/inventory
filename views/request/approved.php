@@ -17,9 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
         'dataProvider'=>$dataProvider,
         'toolbar' =>  [
-            // ['content'=>
-            //     Html::a('Create Item', ['create'], ['class' => 'btn btn-success'])
-            // ],
             '{export}',
             '{toggleData}'
         ],
@@ -50,6 +47,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'user_id',
                 'value'=> 'user.username',
+                'contentOptions' => function ($model, $key, $index, $column) {
+                    return ['style' => 'color:'.($model->user->username ? 'green' : 'red')];
+                },
                 'filter'=>ArrayHelper::map(User::find()->asArray()->all(),'username','username'),
                 'filterType' => GridView::FILTER_SELECT2,
                 'filterWidgetOptions' => [
@@ -60,6 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute'=>'autOfficer',
                 'value'=> 'officer.username',
+                'contentOptions' => function ($model, $key, $index, $column) {
+                    return ['style' => 'color:'.($model->officer->username? 'green' : 'red')];
+                },
                 'filter'=>ArrayHelper::map(User::find()->asArray()->all(),'username','username'),
                 'filterType' => GridView::FILTER_SELECT2,
                 'filterWidgetOptions' => [

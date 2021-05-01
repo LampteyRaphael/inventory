@@ -30,20 +30,20 @@ $this->params['breadcrumbs'][] = $this->title;
             '{toggleData}'
         ],
 
-    'pjax'=>true,
-    'bordered' => true,
-    'striped' => true,
-    'condensed' => false,
-    'bootstrap'=>true,
-    'responsive' => true,
-    'hover' => true,
-    'panel' => [
-        'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-globe"></i>Request</h3>',
+        'pjax'=>true,
+        'bordered' => true,
+        'striped' => true,
+        'condensed' => false,
+        'bootstrap'=>true,
+        'responsive' => true,
+        'hover' => true,
+        'panel' => [
+            'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-globe"></i>Request</h3>',
         'type' => GridView::TYPE_PRIMARY,
-    ],
+        ],
         'columns' => [
             ['class' => 'kartik\grid\SerialColumn'],
-            ['class' => 'kartik\grid\CheckBoxColumn'],
+            // ['class' => 'kartik\grid\CheckBoxColumn'],
             [
                 'attribute'=>'user_id',
                 'value'=>'user.username',
@@ -102,11 +102,11 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'quantityIssued',
 
             ['class' => 'kartik\grid\ActionColumn',
-            'template' => '{view} {delete} ',
+            'template' => '{update} {delete} ',
             'width'=>100,
             'buttons' => [
-                'view' => function ($url, $model, $key) {
-                    return Html::a ( '<span class="btn btn-success" aria-hidden="true">View</span> ', ['request-sub/view', 'id' => $model->id] );
+                'update' => function ($url, $model, $key) {
+                    return Html::a ( '<span class="btn btn-success" aria-hidden="true">Update</span> ', ['request-sub/update', 'id' => $model->id] );
                 },
 
                 'delete' => function ($url, $model, $key) {

@@ -16,7 +16,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\web\ForbiddenHttpException;
-
+use yii\web\UploadedFile;
 
 /**
  * InventoryController implements the CRUD actions for Inventory model.
@@ -115,9 +115,17 @@ class InventoryController extends Controller
 
      public function actionImport()
      {
-         $inputFile='Uploads/file.xlsx';
- 
+         // $inputFile='Uploads/file.xlsx';
+         
+       
          try{
+            $model=new Inventory();
+            $model->file=UploadedFile::getInstance($model,'file');  
+            if($model->file !=null){
+                $model->file->saveAs('uploads/'.$model->file.''.$model->file->extension);
+                $inputFile='uploads/'.$model->file;
+            }
+            
              $inputFileType= \PHPExcel_IOFactory::identify($inputFile);
              $objReader =    \PHPExcel_IOFactory::createReader($inputFileType);
              $objPHPExcel = $objReader->load($inputFile);
@@ -135,67 +143,66 @@ class InventoryController extends Controller
                  continue;
              }
 
-             $item1= new Item();
-             $item1->name=$rowData[0][0];
-             $item1->save();
+             //entrying new item that is not in the Item table  whiles importing to inventory table
+            $item1= new Item();
+            $item1->name=$rowData[0][0];
+            $item1->save();
  
-             $category1= new Category();
-             $category1->name=$rowData[0][1];
-             $category1->save();
+            //entrying new category that is not in the category table  whiles importing to inventory table
+            $category1= new Category();
+            $category1->name=$rowData[0][1];
+            $category1->save();
  
-             $brand1= new Brand();
-             $brand1->name=$rowData[0][4];
-             $brand1->save();
+            //entrying new brand that is not in the brand table  whiles importing to inventory table
+            $brand1= new Brand();
+            $brand1->name=$rowData[0][4];
+            $brand1->save();
  
-             $status1= new StatusCategory();
-             $status1->name=$rowData[0][6];
-             $status1->save();
+            //entrying new sub-category that is not in the brand table  whiles importing to inventory table
+            $status1= new StatusCategory();
+            $status1->name=$rowData[0][6];
+            $status1->save();
  
-             $block1= new Blocks();
-             $block1->names=$rowData[0][8];
-             $block1->save();
+           //entrying new block that is not in the block table  whiles importing to inventory table
+            $block1= new Blocks();
+            $block1->names=$rowData[0][8];
+            $block1->save();
  
-             $room1= new Room();
-             $room1->name=$rowData[0][9];
-             $room1->save();
+           //entrying new room that is not in the room table  whiles importing to inventory table
+            $room1= new Room();
+            $room1->name=$rowData[0][9];
+            $room1->save();
 
-             $item= new Inventory();
-             $items=Item::find()->where(['name'=>$rowData[0][0]])->one();
-            // $items->id;
-            $item->item_id= $items->id ?? '';
+            //entrying new inventory that is not in the inventory table  whiles importing to inventory table
+            $invent= new Inventory();
+            $items=Item::find()->where(['name'=>$rowData[0][0]])->one();
+           
+            $invent->item_id= $items->id ?? '';
 
-            //  die();
             $categorys=Category::find()->where(['name'=>$rowData[0][1]])->one();
-             $item->category_id=$categorys->id;
+            $invent->category_id=$categorys->id??'';
             
+            $invent->serial=$rowData[0][2];
+            $invent->model=$rowData[0][3];
 
-            $item->serial=$rowData[0][2];
-            $item->model=$rowData[0][3];
-
-            $brands=Brand::find()->where(['name'=>$rowData[0][4]])->all();
-            foreach ($brands as $brand){
-                $item->brand_id=$brand->id;
-            }
-
-            $item->description=$rowData[0][5];
-            $statuss=StatusCategory::find()->where(['name'=>$rowData[0][6]])->all();
-                foreach ($statuss as $status){
-                $item->status = $status->id;
-            }
-
-            $item->block_id = Yii::$app->user->identity->block_id;
-            $item->room_id  = Yii::$app->user->identity->room_id;
-            $item->user_id  = Yii::$app->user->identity->id;
-           $p =$item->save();
-
-
+            //calling id only from brand table
+            $brands=Brand::find()->where(['name'=>$rowData[0][4]])->one();
+            $invent->brand_id=$brands->id??'';
+           
+            //calling description id only from description table
+            $invent->description=$rowData[0][5];
+            $statuss=StatusCategory::find()->where(['name'=>$rowData[0][6]])->one();
+            $invent->status = $statuss->id??'';
+    
+            $invent->block_id = Yii::$app->user->identity->block_id;
+            $invent->room_id  = Yii::$app->user->identity->room_id;
+            $invent->user_id  = Yii::$app->user->identity->id;
+            $invent->save();
            //return   print_r($item->getErrors());
-
          }
-
          Yii::$app->getSession()->setFlash('message',  'Successfully Imported Excel');
          return $this->redirect(['index']);
- 
+       
      }
 
 
@@ -271,7 +278,7 @@ class InventoryController extends Controller
     public function actionImportc()
     {
         $model=new Inventory();
-        return $this->render('importc',[
+        return $this->render('import-create',[
             'model'=>$model,
         ]);
 
@@ -279,7 +286,15 @@ class InventoryController extends Controller
 
     public function actionImportcc()
     {   
-        $inputFile='Uploads/file.xlsx';
+       $model=new Inventory();
+
+       $model->file=UploadedFile::getInstance($model,'file');
+
+       if($model->file !=null){
+           $model->file->saveAs('uploads/'.$model->file);
+
+           $inputFile='uploads/'.$model->file;
+       }
 
         try{
             $inputFileType= \PHPExcel_IOFactory::identify($inputFile);

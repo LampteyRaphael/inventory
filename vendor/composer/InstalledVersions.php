@@ -24,12 +24,12 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '7e79cc3e1e8883c86b3d2d8655e8e468ffd20124',
     'name' => 'yiisoft/yii2-app-basic',
   ),
   'versions' => 
@@ -432,12 +432,12 @@ private static $installed = array (
     ),
     'codeception/lib-innerbrowser' => 
     array (
-      'pretty_version' => '1.4.2',
-      'version' => '1.4.2.0',
+      'pretty_version' => '1.5.0',
+      'version' => '1.5.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '4ffb91c18e4cacd073ff2914c07e5ccaf5efe449',
+      'reference' => '4b0d89b37fe454e060a610a85280a87ab4f534f1',
     ),
     'codeception/module-asserts' => 
     array (
@@ -585,12 +585,12 @@ private static $installed = array (
     ),
     'guzzlehttp/psr7' => 
     array (
-      'pretty_version' => '1.8.1',
-      'version' => '1.8.1.0',
+      'pretty_version' => '1.8.2',
+      'version' => '1.8.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '35ea11d335fd638b5882ff1725228b3d35496ab1',
+      'reference' => 'dc960a912984efb74d0a90222870c72c87f10c91',
     ),
     'kartik-v/bootstrap-checkbox-x' => 
     array (
@@ -609,6 +609,16 @@ private static $installed = array (
       array (
       ),
       'reference' => '394cb4f85d82522ec5918f1581bdad518b324498',
+    ),
+    'kartik-v/yii2-builder' => 
+    array (
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
+      'aliases' => 
+      array (
+        0 => '1.6.x-dev',
+      ),
+      'reference' => '74843d777dc9cb1d6e04f73f82c471b6aadde037',
     ),
     'kartik-v/yii2-checkbox-x' => 
     array (
@@ -656,6 +666,15 @@ private static $installed = array (
         0 => '3.3.x-dev',
       ),
       'reference' => '1aa635faba7778d354a7a1e48c66b87744eed2af',
+    ),
+    'kartik-v/yii2-helpers' => 
+    array (
+      'pretty_version' => 'v1.3.9',
+      'version' => '1.3.9.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '0bec7a97bf9d0293d96be5c496fe9654c4dec94b',
     ),
     'kartik-v/yii2-krajee-base' => 
     array (
@@ -1208,12 +1227,12 @@ private static $installed = array (
     ),
     'symfony/deprecation-contracts' => 
     array (
-      'pretty_version' => 'v2.2.0',
-      'version' => '2.2.0.0',
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5fa56b4074d1ae755beb55617ddafe6f5d78f665',
+      'reference' => '5f38c8804a9e97d23e0c8d63341088cd8a22d627',
     ),
     'symfony/dom-crawler' => 
     array (
@@ -1235,12 +1254,12 @@ private static $installed = array (
     ),
     'symfony/event-dispatcher-contracts' => 
     array (
-      'pretty_version' => 'v2.2.0',
-      'version' => '2.2.0.0',
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0ba7d54483095a198fa51781bc608d17e84dffa2',
+      'reference' => '69fee1ad2332a7cbab3aca13591953da9cdb7a11',
     ),
     'symfony/event-dispatcher-implementation' => 
     array (
@@ -1341,12 +1360,12 @@ private static $installed = array (
     ),
     'symfony/service-contracts' => 
     array (
-      'pretty_version' => 'v2.2.0',
-      'version' => '2.2.0.0',
+      'pretty_version' => 'v2.4.0',
+      'version' => '2.4.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'd15da7ba4957ffb8f1747218be9e1a121fd298a1',
+      'reference' => 'f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb',
     ),
     'symfony/string' => 
     array (
@@ -1395,12 +1414,12 @@ private static $installed = array (
     ),
     'yiisoft/yii2-app-basic' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '7e79cc3e1e8883c86b3d2d8655e8e468ffd20124',
     ),
     'yiisoft/yii2-bootstrap' => 
     array (

@@ -57,6 +57,7 @@ class Inventory extends \yii\db\ActiveRecord
             [['room_id'], 'exist', 'skipOnError' => true, 'targetClass' => Room::className(), 'targetAttribute' => ['room_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['file'],'file'],
+            [['file'],'required']
 //            [['serial', 'model'], 'unique'],
             // [['created_at','updated_at'],'date']
         ];

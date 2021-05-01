@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\AuthAssignment;
+use app\models\AuthItemChild;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
@@ -77,15 +79,6 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
-
-        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
-        //     return $this->redirect(['view', 'id' => $model->id]);
-        // }
-
-        // return $this->render('create', [
-        //     'model' => $model,
-        // ]);
-
         if ($model->load(Yii::$app->request->post())){
             if ($model->validate()){
                 $model->username=$_POST['User']['username'];
@@ -97,8 +90,25 @@ class UserController extends Controller
                 $model->password = $model->setPassword($_POST['User']['password']);
                 $model->authKey=$model->generateAuthKey();
                 $model->accessToken;
+
+                //assigning permission to registered users
+                $model->save();
+                $newPermission=new AuthAssignment();
+                $newPermission->user_id=$model->id;
+                $newPermission->item_name=$model->role->name;
+                $newPermission->save();
+
+                //system role base access permissions
+                $rolebc=$_POST['User']['name'];
+                foreach($rolebc as $role){
+                    $authItem= new AuthItemChild();
+                    $authItem->parent=$model->role->name;
+                    $authItem->child= $role;
+                    $authItem->save();
+                }
+
                 if ($model->save()){
-                    Yii::$app->mailer->compose('register',['model'=>$model])
+                    Yii::$app->mailer->compose()
                     ->setFrom('raphlamptey@gmail.com')
                     ->setTo('raphlamptey@gmail.com')
                     ->setSubject('Welcome to Raphael!')

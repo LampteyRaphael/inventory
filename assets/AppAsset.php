@@ -35,7 +35,7 @@ class AppAsset extends AssetBundle
         
     ];
     public $js = [
-      //   'javascript2.js',
+        'javascript2.js',
         // 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
         
         // 'https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js',

@@ -220,4 +220,22 @@ return array (
       '@kartik/checkbox' => $vendorDir . '/kartik-v/yii2-checkbox-x/src',
     ),
   ),
+  'kartik-v/yii2-builder' => 
+  array (
+    'name' => 'kartik-v/yii2-builder',
+    'version' => 'dev-master',
+    'alias' => 
+    array (
+      '@kartik/builder' => $vendorDir . '/kartik-v/yii2-builder/src',
+    ),
+  ),
+  'kartik-v/yii2-helpers' => 
+  array (
+    'name' => 'kartik-v/yii2-helpers',
+    'version' => '1.3.9.0',
+    'alias' => 
+    array (
+      '@kartik/helpers' => $vendorDir . '/kartik-v/yii2-helpers/src',
+    ),
+  ),
 );

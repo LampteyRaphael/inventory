@@ -1,6 +1,6 @@
 <?php
-
 use app\models\ActiveStatus;
+use app\models\AuthItem;
 use app\models\Blocks;
 use app\models\Role;
 use app\models\Room;
@@ -12,8 +12,6 @@ use kartik\select2\Select2;
 /* @var $model app\models\User */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<div class="table-responsive">
-<div class="user-form">
     <?php $form = ActiveForm::begin(); ?>
     <div class="row">
        <div class="col-md-6">
@@ -23,8 +21,7 @@ use kartik\select2\Select2;
           <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
        </div>
        <div class="col-md-6">
-       <?= 
-                $form->field($model, 'block_id')->widget(Select2::classname(), [
+            <?= $form->field($model, 'block_id')->widget(Select2::classname(), [
                  'data' => ArrayHelper::map(Blocks::find()->all(),'id','names'),
                  'language' => 'de',
                  'options' => ['placeholder' => 'Select a state ...'],
@@ -75,6 +72,11 @@ use kartik\select2\Select2;
        </div>
     </div>
     <div class="row">
+       <div class="col-md-12">
+          <?= $form->field($model, 'name[]')->checkboxList(ArrayHelper::map(AuthItem::find()->asArray()->all(),'name','name')) ?>
+       </div>
+       </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <?= Html::submitButton('Save', ['class' => 'btn btn-success float-right']) ?>
@@ -82,4 +84,5 @@ use kartik\select2\Select2;
         </div>
     </div>
     <?php ActiveForm::end(); ?>
-</div>
+
+

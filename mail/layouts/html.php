@@ -2,6 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+$logoLink=Url::to('/images/logo.png',true);
 /* @var $this \yii\web\View view component instance */
 /* @var $message \yii\mail\MessageInterface the message being composed */
 /* @var $content string main view render result */
@@ -16,7 +17,7 @@ use yii\helpers\Url;
 </head>
 <body>
     <?php $this->beginBody() ?>
-<!--    --><?//= Html::img($logoLink,['alt'=>'Raphael Logo']); ?>
+  <?= Html::img($logoLink,['alt'=>'Raphael Logo']); ?>
     <?= $content ?>
     <?php $this->endBody() ?>
 </body>

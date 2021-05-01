@@ -34,6 +34,7 @@ class User extends \yii\db\ActiveRecord implements  IdentityInterface
     /**
      * {@inheritdoc}
      */
+    public $name;
     public static function tableName()
     {
         return 'user';
@@ -53,7 +54,7 @@ class User extends \yii\db\ActiveRecord implements  IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'password', 'email', 'role_id', 'is_active'], 'required'],
+            [['username', 'password', 'email', 'role_id', 'is_active','name'], 'required'],
             [['email'],'email'],
             [['role_id', 'is_active', 'block_id', 'room_id'], 'integer'],
             [['username', 'password', 'email', 'authKey', 'accessToken'], 'string', 'max' => 255],
