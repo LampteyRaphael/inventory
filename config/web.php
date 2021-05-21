@@ -33,8 +33,8 @@ $config = [
             'transport'=>[
                 'class'=>'Swift_SmtpTransport',
                 'host'=>'smtp.gmail.com',
-                'username'=>'raphlamptey@gmail.com',
-                'password'=>'&$Pampanaa$$$',
+                'username'=>'ray@gmail.com',
+                'password'=>'12345',
                 'port'=>'587',
                 'encryption'=>'tls',
             ],
